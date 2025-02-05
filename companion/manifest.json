@@ -1,0 +1,30 @@
+{
+    "id": "bosch-hd-camera-control",
+    "name": "Bosch HD Camera Control",
+    "shortname": "bosch-hd-camera",
+    "description": "Control Bosch HD Cameras and Video Switchers",
+    "version": "1.0.0",
+    "license": "MIT",
+    "repository": "https://github.com/mko1989/Bosch-HD-CameraControl.git",
+    "bugs": "https://github.com/mko1989/Bosch-HD-CameraControl/issues",
+    "maintainers": [
+        {
+            "name": "Marcin Wardecki with help from Codeium Windsurf",
+            "email": "m.wardecki89@gmail.com"
+        }
+    ],
+    "legacyIds": [],
+    "runtime": {
+        "type": "node18",
+        "api": "nodejs-ipc",
+        "apiVersion": "0.0.0",
+        "entrypoint": "../index.js"
+    },
+
+    "manufacturer": "Bosch",
+        "products": [
+        "HD Camera Control"
+        ],
+        "keywords": ["camera", "video", "tcp", "switcher"]
+
+}
