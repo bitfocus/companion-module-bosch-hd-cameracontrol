@@ -7,6 +7,7 @@ class BoschHDCameraControlInstance extends InstanceBase {
         super(internal)
         this.kramerVideoServer = null
         this.cameraPresetServer = null
+        this.tvOneVideoServer = null
     }
 
     getConfigFields() {
@@ -28,7 +29,8 @@ class BoschHDCameraControlInstance extends InstanceBase {
             { variableId: 'cam3_preset', name: 'Camera 3 Preset' },
             { variableId: 'cam4_preset', name: 'Camera 4 Preset' },
             { variableId: 'cam5_preset', name: 'Camera 5 Preset' },
-            { variableId: 'cam6_preset', name: 'Camera 6 Preset' }
+            { variableId: 'cam6_preset', name: 'Camera 6 Preset' },
+            { variableId: 'TvOne_vid_in', name: 'TvOne Video Input' }
         ]
         this.setVariableDefinitions(variables)
 
@@ -40,7 +42,8 @@ class BoschHDCameraControlInstance extends InstanceBase {
             cam3_preset: '0',
             cam4_preset: '0',
             cam5_preset: '0',
-            cam6_preset: '0'
+            cam6_preset: '0',
+            TvOne_vid_in: '0'
         })
     }
 
@@ -112,6 +115,61 @@ class BoschHDCameraControlInstance extends InstanceBase {
             this.log('info', 'Kramer Video Switcher Server listening on port 5000')
         })
 
+        // TvOne Video Input Server (Port 10001)
+        this.tvOneVideoServer = net.createServer((socket) => {
+            this.log('info', `TvOne Video Input Server: New client connected from ${socket.remoteAddress}:${socket.remotePort}`)
+
+            socket.on('data', (data) => {
+                const command = data.toString().trim()
+                this.log('debug', `TvOne Video Input Server: Received command: ${command}`)
+
+                // Mapping of commands to video inputs
+                const videoInputMap = {
+                    'F040041008200005017': '1',
+                    'F040041008200005118': '2',
+                    'F040041008200005219': '3',
+                    'F04004100820000531A': '4',
+                    'F04004100820000541B': '5',
+                    'F04004100820000551C': '6',
+                    'F04004100820000561D': '7',
+                    'F04004100820000571E': '8'
+                }
+
+                const videoInput = videoInputMap[command]
+                if (videoInput) {
+                    this.log('info', `TvOne Video Input Server: Setting video input to ${videoInput}`)
+                    
+                    // Update the TvOne video input variable
+                    this.setVariableValues({ TvOne_vid_in: videoInput })
+                    
+                    // Optional: Send an acknowledgment if needed
+                    socket.write(`Input set to ${videoInput}\r\n`, (err) => {
+                        if (err) {
+                            this.log('error', `TvOne Video Input Server: Error sending response: ${err.message}`)
+                        }
+                    })
+                } else {
+                    this.log('warn', `TvOne Video Input Server: Unrecognized command: ${command}`)
+                }
+            })
+
+            socket.on('error', (err) => {
+                this.log('error', `TvOne Video Input Server: Socket error: ${err.message}`)
+            })
+
+            socket.on('close', (hadError) => {
+                this.log('info', `TvOne Video Input Server: Client disconnected${hadError ? ' with error' : ''}`)
+            })
+        })
+
+        this.tvOneVideoServer.on('error', (err) => {
+            this.log('error', `TvOne Video Input Server error: ${err.message}`)
+        })
+
+        this.tvOneVideoServer.listen(10001, () => {
+            this.log('info', 'TvOne Video Input Server listening on port 10001')
+        })
+
         // Camera Preset CGI Server (Port 80)
         this.cameraPresetServer = net.createServer((socket) => {
             this.log('info', `Camera Preset Server: New client connected from ${socket.remoteAddress}:${socket.remotePort}`)
@@ -181,6 +239,9 @@ class BoschHDCameraControlInstance extends InstanceBase {
         }
         if (this.cameraPresetServer) {
             this.cameraPresetServer.close()
+        }
+        if (this.tvOneVideoServer) {
+            this.tvOneVideoServer.close()
         }
     }
 }
