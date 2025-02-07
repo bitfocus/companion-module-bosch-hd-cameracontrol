@@ -30,6 +30,8 @@ class BoschHDCameraControlInstance extends InstanceBase {
             { variableId: 'cam4_preset', name: 'Camera 4 Preset' },
             { variableId: 'cam5_preset', name: 'Camera 5 Preset' },
             { variableId: 'cam6_preset', name: 'Camera 6 Preset' },
+            { variableId: 'cam7_preset', name: 'Camera 7 Preset' },
+            { variableId: 'cam8_preset', name: 'Camera 8 Preset' },
             { variableId: 'TvOne_vid_in', name: 'TvOne Video Input' }
         ]
         this.setVariableDefinitions(variables)
@@ -43,6 +45,8 @@ class BoschHDCameraControlInstance extends InstanceBase {
             cam4_preset: '0',
             cam5_preset: '0',
             cam6_preset: '0',
+            cam7_preset: '0',
+            cam8_preset: '0',
             TvOne_vid_in: '0'
         })
     }
@@ -193,7 +197,9 @@ class BoschHDCameraControlInstance extends InstanceBase {
                         'cam3': 'cam3_preset',
                         'cam4': 'cam4_preset',
                         'cam5': 'cam5_preset',
-                        'cam6': 'cam6_preset'
+                        'cam6': 'cam6_preset',
+                        'cam7': 'cam7_preset',
+                        'cam8': 'cam8_preset'
                     }
 
                     const variableId = presetVariableMap[username]
