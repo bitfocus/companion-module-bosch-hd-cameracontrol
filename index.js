@@ -21,6 +21,25 @@ class BoschHDCameraControlInstance extends InstanceBase {
         this.initTCPServers()
     }
 
+    async configUpdated(config) {
+        this.log('info', 'Configuration updated')
+        this.config = config
+        
+        // Close existing servers
+        if (this.kramerVideoServer) {
+            this.kramerVideoServer.close()
+        }
+        if (this.cameraPresetServer) {
+            this.cameraPresetServer.close()
+        }
+        if (this.tvOneVideoServer) {
+            this.tvOneVideoServer.close()
+        }
+
+        // Reinitialize servers with new configuration
+        this.initTCPServers()
+    }
+
     initVariables() {
         const variables = [
             { variableId: 'kramer_vid_in', name: 'Kramer Video Input' },
