@@ -22,6 +22,7 @@ Updates the kramer_vid_in variable or updates the TvOne_vid_in variable with the
   - `cam8_preset`
 
 ## Authentication
+To distinguish which camera to control user needs to add following usernames in HD Camera Control 
 - Camera 1: username `cam1`
 - Camera 2: username `cam2`
 - Camera 3: username `cam3`
@@ -31,6 +32,15 @@ Updates the kramer_vid_in variable or updates the TvOne_vid_in variable with the
 - Camera 7: username `cam7`
 - Camera 8: username `cam8`
 
-## No Configuration Required
-This module automatically starts the necessary TCP servers on ports 5000 and 80.
+## Trigger Examples
+Video switching:
+Events: On variable change - Variable to watch - bosch-hd-camera:kramer_vid_in
+Actions: atem: ME: Set Program input from variables
+Input ID: $(bosch-hd-camera:TvOne_vid_in)
+
+Preset recall:
+Events: On variable change - Variable to watch - bosch-hd-camera:cam1_preset
+Actions: visca: Recall Preset
+Use variables for preset: check
+Preset number: $(bosch-hd-camera:cam1_preset)
 
