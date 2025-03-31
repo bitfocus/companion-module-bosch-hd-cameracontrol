@@ -5,11 +5,11 @@
     "description": "Control Bosch HD Cameras and Video Switchers",
     "version": "1.0.0",
     "license": "MIT",
-    "repository": "https://github.com/mko1989/Bosch-HD-CameraControl.git",
-    "bugs": "https://github.com/mko1989/Bosch-HD-CameraControl/issues",
+    "repository": "https://github.com/bitfocus/companion-module-bosch-hd-cameracontrol.git",
+    "bugs": "https://github.com/bitfocus/companion-module-bosch-hd-cameracontrol/issues",
     "maintainers": [
         {
-            "name": "Marcin Wardecki with help from Codeium Windsurf",
+            "name": "Marcin Wardecki",
             "email": "m.wardecki89@gmail.com"
         }
     ],
@@ -18,7 +18,7 @@
         "type": "node18",
         "api": "nodejs-ipc",
         "apiVersion": "0.0.0",
-        "entrypoint": "../index.js"
+        "entrypoint": "../main.js"
     },
 
     "manufacturer": "Bosch",
