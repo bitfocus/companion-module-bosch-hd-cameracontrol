@@ -3,7 +3,7 @@
     "name": "Bosch HD Camera Control",
     "shortname": "bosch-hd-camera",
     "description": "Control Bosch HD Cameras and Video Switchers",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": "MIT",
     "repository": "https://github.com/bitfocus/companion-module-bosch-hd-cameracontrol.git",
     "bugs": "https://github.com/bitfocus/companion-module-bosch-hd-cameracontrol/issues",
