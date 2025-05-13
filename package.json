@@ -1,5 +1,5 @@
 {
-	"name": "bosch-hd-camera-control",
+	"name": "companion-module-bosch-hd-cameracontrol",
 	"version": "1.0.0",
 	"description": "Companion module for Bosch HD Camera Control",
 	"type": "module",
