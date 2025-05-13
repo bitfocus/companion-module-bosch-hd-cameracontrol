@@ -2,25 +2,29 @@
 	"name": "companion-module-bosch-hd-cameracontrol",
 	"version": "1.0.0",
 	"description": "Companion module for Bosch HD Camera Control",
+	"main": "main.js",
 	"type": "module",
-	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [
-		"companion",
+		"hdcamera",
 		"bosch",
 		"camera",
 		"tcp"
 	],
-	"author": "",
-	"license": "ISC",
+	"author": "Marcin Wardecki",
+	"license": "MIT",
 	"dependencies": {
-		"@companion-module/base": "^1.0.0"
+		"@companion-module/base": "1.12.0",
+		"object-path": "^0.11.8",
+		"ws": "^7.5.10"
 	},
+	"engines": {
+		"node": "^18.12 || ^22.8"
+	},
+	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
 	"devDependencies": {
-		"@companion-module/tools": "^2.2.2",
-		"eslint": "^8.0.0"
-	},
-	"packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+		"@companion-module/tools": "^2.2.2"
+	}
 }

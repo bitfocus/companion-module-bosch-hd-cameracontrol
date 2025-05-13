@@ -1,4 +1,4 @@
-export function getConfigFields() {
+function getConfigFields() {
     return [
         {
             type: 'static-text',
@@ -29,3 +29,7 @@ export function getConfigFields() {
         }
     ]
 }
+
+module.exports = {
+    getConfigFields,
+};
