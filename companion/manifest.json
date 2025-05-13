@@ -1,5 +1,5 @@
 {
-    "id": "bosch-hd-camera-control",
+    "id": "companion-module-bosch-hd-cameracontrol",
     "name": "Bosch HD Camera Control",
     "shortname": "bosch-hd-camera",
     "description": "Control Bosch HD Cameras and Video Switchers",
