@@ -22,7 +22,9 @@
     },
 
     "manufacturer": "Bosch",
-        "products": ["HD Camera Control"],
-        "keywords": ["camera", "video", "tcp", "switcher", "ptz", "preset"]
+        "products": [
+        "HD Camera Control"
+        ],
+        "keywords": ["camera", "video", "tcp", "switcher"]
 
 }
